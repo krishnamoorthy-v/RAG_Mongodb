@@ -2,13 +2,12 @@ const { VoyageAIClient } = require('voyageai');
 
 // Ensure the API key is available in process.env.VOYAGE_API_KEY
 const client = new VoyageAIClient({ apiKey: process.env.VOYAGE_API_KEY, baseUrl: "https://ai.mongodb.com/v1" });
-console.log(process.env.VOYAGE_API_KEY)
 
 const generateEmbedding = async (text) => {
   try {
     const response = await client.embed({
       input: [text],
-      model: "voyage-4", // voyage-3 produces 1024 dimensional embeddings. voyage-3-lite produces 512.
+      model: "voyage-4", 
     });
     
     // The response data contains the embedding for the input text
